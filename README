@@ -21,7 +21,7 @@ make
 ./04-enable-rclocal.sh
 
 6. Repack firmware with 02-repack.sh, e.g.
-./02-repack.sh myfw.bin
+./05-repack.sh myfw.bin
 
 7. Burn the firmware, if you are using the stock TPlink use the web interface and upload it. 
    - if you already have SSH access to the router drop the file on it and use nvrammanager -u myfw.bin to flash it from the command line
