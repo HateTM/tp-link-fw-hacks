@@ -5,6 +5,8 @@ python, python-pip, ubi_reader python module (pip install ubi_reader), squashfs-
 
 Usage:
 
+NOTE: don't run this as root. you need to be in a directory with the stock firmware.
+
 1. compile md5-fix utility, execute:
 make
 
@@ -20,7 +22,7 @@ make
 5. Enable rc.local at boot (optional) if you want to run custom commands at the router startup.
 ./04-enable-rclocal.sh
 
-6. Repack firmware with 02-repack.sh, e.g.
+6. Repack firmware with 05-repack.sh, e.g.
 ./05-repack.sh myfw.bin
 
 7. Burn the firmware, if you are using the stock TPlink use the web interface and upload it. 
