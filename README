@@ -1,15 +1,33 @@
-Unpack and repack tool for TP-Link AX55 firmware (may work with other firmwares using safeload image format and ubi image)
+Unpack and repack tool for TP-Link AX55/AX53 firmware (may work with other firmwares using safeload image format and ubi image)
 
 Requirements:
-python, python-pip, ubi_reader python module (pip install ubi_reader), squashfs-tools (apt install squashfs-tools), make, gcc
+python, python-pip, ubi_reader python module (pip install ubi_reader), squashfs-tools (apt install squashfs-tools), make, gcc, fakeroot
 
 Usage:
+
 1. compile md5-fix utility, execute:
 make
+
 2. Unpack stock firmware with 01-unpack.sh, e.g.
 ./01-unpack.sh ax55v1-up-all-ver1-1-1-P1[20220621-rel71166]_sign_2022-06-21_20.01.15.bin
 
-3. Modify files under squashfs-root
+3. Run the cleanup script, it will purge all unecessary trash from the firmware. (WIP, there's more stuff to pull out)
+./02-cleanup.sh
 
-4. Repack firmware with 02-repack.sh, e.g.
+4. Enable SSH (optional) if you want to access your router. Edit the file and place your public key.
+./03-enable-ssh.sh
+
+5. Enable rc.local at boot (optional) if you want to run custom commands at the router startup.
+./04-enable-rclocal.sh
+
+6. Repack firmware with 02-repack.sh, e.g.
 ./02-repack.sh myfw.bin
+
+7. Burn the firmware, if you are using the stock TPlink use the web interface and upload it. 
+   - if you already have SSH access to the router drop the file on it and use nvrammanager -u myfw.bin to flash it from the command line
+
+
+Enjoy your router free from Avira, Cloud, SmartHome, Alexa, Reports, Family Protect, Domain logins (tplinkwifi.net), Client manager (cloud stuff) and a bunch more of other stuff.
+
+
+Read the scripts if you want to understand it better and how it works.

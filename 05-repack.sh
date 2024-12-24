@@ -10,7 +10,8 @@ if [ -f "$1" ]; then
 fi
 firmware=$1
 
-mksquashfs squashfs-root/ tmp/rootfs.bin -comp xz -b 256K -noappend
+fakeroot mksquashfs squashfs-root/ tmp/rootfs.bin -comp xz -b 256K -noappend
+
 kernel=$(find -name "*kernel.ubifs")
 [[ -f tmp/kernel.itb ]] && rm -f tmp/kernel.itb
 cp -f $kernel tmp/kernel.itb

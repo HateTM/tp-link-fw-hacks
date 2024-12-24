@@ -9,6 +9,8 @@ if [ ! -f "$1" ]; then
   exit 1
 fi
 
+[ -d squashfs-root ] && rm -rf squashfs-root
+
 firmware=$1
 pos=$(grep -a -b -m 1 "UBI#" "$firmware" | cut -d ":" -f 1)
 mkdir -p tmp
@@ -20,6 +22,6 @@ cd tmp
 ubireader_extract_images ubi.img
 
 cd ..
-find -name "*rootfs.ubifs" -exec unsquashfs {} \;
+fakeroot find -name "*rootfs.ubifs" -exec unsquashfs {} \;
 
 echo "Successfully unpacked rootfs to squashfs-root. Modify anything you want and repack the firmware"
