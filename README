@@ -1,4 +1,4 @@
-Unpack and repack tool for TP-Link AX55/AX53 firmware (may work with other firmwares using safeload image format and ubi image)
+Unpack and repack tool for TP-Link firmware (may work with other firmwares using safeload image format and ubi image)
 
 Requirements:
 python, python-pip, ubi_reader python module (pip install ubi_reader), squashfs-tools (apt install squashfs-tools), make, gcc, fakeroot
